@@ -4,7 +4,6 @@ __pycache__
 QR_generator/__pycache__
 !/building/desktop_compile/dist/
 !/building/desktop_compile/build/
-building/
 *.storage
 testing/
 
