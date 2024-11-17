@@ -1,4 +1,4 @@
-Ce projet a été réalisé pour la société technique Formule Polytechnique Montréal durant ma première année d’études. Initialement développé sur un GitLab privé, j’ai choisi de le sauvegarder sur mon GitHub personnel. À ce jour, le projet est inactif et n’a malheureusement pas été utilisé par la société.
+Ce projet a été réalisé pour la société technique Formule Polytechnique Montréal durant ma première année d’études. Initialement développé sur un GitLab privé, j’ai choisi de le sauvegarder sur mon GitHub personnel. À ce jour, le projet est inactif.
 
 Bien que je sois fier de ce travail, je reconnais que l’application n’atteint pas le niveau requis pour répondre aux besoins d’une organisation aussi complexe que Formule. Je tiens à exprimer ma gratitude envers Alexis Fadei, qui a joué un rôle clé dans la réalisation de ce projet, ainsi qu’à l’équipe informatique pour leur soutien et leur aide précieuse lors des moments difficiles.
 
