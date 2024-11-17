@@ -1,0 +1,257 @@
+<LoginScreen>:
+    MDBoxLayout:
+        id: mybox
+        orientation: 'vertical'
+        padding: 15
+
+        MDTopAppBar:
+            id: menu_top_app_bar
+            title: 'FSAE-Scanner-App'
+            anchor_title: "left"
+            
+        MDLabel:
+            text: "Please log in with your google account and make sure you have access to the BOM sheet \n    - If it's your first time using the app, you will be asked to login with your google account. \n    - Make sure to send a message to Sebastian Cristescu on Mattermost to add you to the list of users for the api.\n    - If you already signed in previously, you won't need to login again"
+            
+        MDBoxLayout:
+            id: mybox
+            orientation: 'horizontal'
+        
+            MDBoxLayout:
+                padding: 15
+                spacing: "24dp"    
+                orientation: 'vertical'      
+                
+                MDRoundFlatButton:
+                    text: "Scan QR code"
+                    on_press: root.scan_qr()
+                
+                MDRoundFlatButton:
+                    text: "Search components"
+                    on_press: root.to_desktop()
+
+                MDRoundFlatButton:
+                    text: "Generate/Print QR codes"
+                    on_press: root.generator()
+
+                    
+            MDBoxLayout:
+                padding: 15
+                spacing: "24dp"    
+                orientation: 'vertical'         
+                
+                MDRoundFlatButton:
+                    text: "Google Login"
+                    on_press: root.google_sign_in()
+                    
+        
+        MDLabel:
+            text: "Scan QR: Using your computer camera to scan a qr code and access the information on a part \n Generate/Print QR codes: Generate QR codes for the parts and print them \n Search components: Search for a part using the ID or the name \n Google Login: Login with your google account to access the BOM sheet \n Check History: Check the history of modifications made to the BOM sheet from this device"
+                
+        
+<DesktopMainScreen>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            id: menu_top_app_bar
+            title: 'FSAE-Scanner-App'
+            anchor_title: "left"
+                    
+        MDTextField:
+            id: find
+            hint_text: "BR-01004 or Brake Caliper"
+            helper_text: "Type the ID or the name of the part"
+            helper_text_mode: "on_focus"
+                    
+        MDRoundFlatButton:
+            padding : [56, 8, 56, 8]
+            pos_hint:{"top": 1,"left": 1}
+            text: "Find"
+            font_size : 40
+            on_press: root.id_get() 
+        ScrollView:
+            id:scroll
+            size_hint: (1, 1)
+            MDList:
+                id:container
+                spacing: '10dp' 
+        
+        MDRoundFlatButton:
+            text: 'Go back'
+            padding : [32, 8, 32, 8]
+            font_size : 40
+            on_press: root.go_back()
+            
+                                                                       
+<CameraScreen>:
+    MDBoxLayout:
+        id:mybox
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            id: menu_top_app_bar
+            title: 'FSAE-Scanner-App'
+            anchor_title: "left"
+        
+        ScanAnalyze:
+            id: preview
+            aspect_ratio: '16:9'
+                    
+        MDBoxLayout:
+            padding: 15
+            spacing: "24dp"
+            adaptive_size: True
+                       
+            MDRoundFlatButton:
+                padding : [56, 8, 56, 8]
+                pos_hint:{"top": 1,"left": 1}
+                text: "Scan"
+                font_size : 40
+                on_press: root.scan_qr()
+         
+        MDLabel:
+            text: ' Version: 0.1\n Fonctionalités:\n 1) Scannez un code qr pour obtenir les informations\n 2) Cherchez dans History pour retracer une modification'
+        
+        MDRoundFlatButton:
+            text: 'Go back'
+            padding : [32, 8, 32, 8]
+            font_size : 40
+            on_press: root.go_back()
+                    
+<PreviewData>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 15
+        spacing: "10dp"
+        
+        ScrollView:
+            id:scroll
+            size_hint_y: 1.8
+            MDList:
+                id: container
+                spacing: '10dp'   
+        
+        BoxLayout: #Seperate the buttons from the textfield
+            orientation: 'horizontal'
+         
+            MDBoxLayout: #Box for buttons
+                orientation: 'vertical'
+                spacing: '10dp'
+                size_hint_x: None
+                width: self.minimum_width 
+                
+                MDRoundFlatButton:
+                    text: 'Go back'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.go_back()
+                    
+        
+                MDRoundFlatButton:
+                    text: 'Get data'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.generate_list()
+                    
+                    
+                MDRoundFlatButton:
+                    text: 'Send Data'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.send_data()
+
+                MDRoundFlatButton:
+                    text: 'Go print'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.go_print()
+                    
+            MDBoxLayout: #Box for textfield
+                id:box_text
+                orientation: 'vertical'
+            
+                    
+<ChangeDrop>
+    MDBoxLayout:
+        orientation: 'vertical'
+        padding: 15
+        
+        ScrollView:
+            id:scroll
+            size_hint: (1, 1)
+            MDList:
+                id:container
+                spacing: '10dp'
+
+                    
+        MDRoundFlatButton:
+            text: 'Go back'
+            size_hint: (0.1 , 0.1)
+            on_press: root.go_back()
+            padding:"10dp"
+            
+<PrintScreen>
+    MDBoxLayout:
+        orientation: "vertical"
+        MDBoxLayout:
+            id: mybox
+            orientation: "horizontal"
+            
+            MDBoxLayout:
+                orientation: "vertical" 
+                
+                MDTextField:
+                    id: list_id
+                    hint_text: "IDs to print"
+                    helper_text: "Enter all IDs to print, separated by a space"
+                    helper_text_mode: "on_focus"
+
+                MDRoundFlatButton:
+                    text: 'clear id.txt'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.clear_id_text() 
+                    
+                MDRoundFlatButton:
+                    text: 'Process id.txt'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.process_id_text() 
+                    
+                MDRoundFlatButton:
+                    text: 'Go back'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.go_back()     
+                    
+            MDBoxLayout:
+                orientation: "vertical" 
+                
+                        
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    
+                    MDCheckbox:
+                        id : print
+                        size_hint: None, None
+                        size: "48dp", "48dp"
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                    MDLabel:
+                        text: "Print QR codes"
+                
+                
+                MDRoundFlatButton:
+                    text: 'Process selected IDs'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.process_selected()
+        
+        MDBoxLayout:
+            id: mybox
+            orientation: "horizontal"
+            padding: 15
+            
+            ScrollView:
+                id:scroll_printer
+                MDList:
+                    id: container_printer
+                    spacing: '10dp'

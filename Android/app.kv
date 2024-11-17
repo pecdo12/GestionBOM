@@ -1,0 +1,164 @@
+<Login>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            id: box
+            orientation: 'horizontal'
+            pos_hint: {"top": 1}
+            padding: dp(24)
+            
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 15
+                spacing: "24dp"
+                size_hint:(.7, 1)
+                MDTextField:
+                    id: url
+                    hint_text: "url"
+                    helper_text: "Url to login"
+                    helper_text_mode: "on_focus"
+                    padding : [56, 8, 56, 8]
+                    pos_hint:{"top": 1,"left": 1}
+        
+        
+                MDTextField:
+                    id: code
+                    hint_text: "Code"
+                    helper_text: "Enter code given by google"
+                    helper_text_mode: "on_focus"
+                    padding : [56, 8, 56, 8]
+                    pos_hint:{"top": 1,"left": 1}
+    
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 15
+                spacing: "24dp"
+                size_hint:(.3, 1)
+                
+                MDRoundFlatButton:
+                    text: "Get code"
+                    font_size: 40
+                    on_press: root.get_code()
+                    padding : [56, 8, 56, 8]
+                    pos_hint:{"top": 1}
+                    
+                MDRoundFlatButton:
+                    text: "Login"
+                    font_size: 40
+                    on_press: root.login_google()
+                    padding : [56, 8, 56, 8]
+                    pos_hint:{"top": 1,"left": 1}
+        
+                MDRoundFlatButton:
+                    text: 'Logged in'
+                    front_size: 40
+                    padding : [56, 8, 56, 8]
+                    pos_hint:{"top": 1}
+                    on_press: root.bypass()
+        MDBoxLayout:
+            orientation: 'vertical'
+
+
+<CameraScreen>:
+    MDBoxLayout:
+        id:mybox
+        orientation: 'vertical'
+
+        MDTopAppBar:
+            id: menu_top_app_bar
+            title: 'FSAE-Scanner-App'
+            anchor_title: "left"
+
+        ScanAnalyze:
+            id: preview
+            aspect_ratio: '16:9'
+
+        MDBoxLayout:
+            padding: 15
+            spacing: "24dp"
+            adaptive_size: True
+
+            MDRoundFlatButton:
+                padding : [56, 8, 56, 8]
+                pos_hint:{"top": 1,"left": 1}
+                text: "Scan"
+                font_size : 40
+                on_press: root.scan_qr()
+
+            
+
+        MDLabel:
+            text: ' Version: 1.0 '
+        MDRoundFlatButton:
+            text: 'Go back'
+            padding : [32, 8, 32, 8]
+            font_size : 40
+            on_press: root.go_back()
+
+<PreviewData>:
+    MDBoxLayout:
+        id:boxinfo
+        orientation: 'vertical'
+        padding: 15
+        spacing: "10dp"
+
+        ScrollView:
+            id:scroll
+            size_hint_y: 1.8
+            MDList:
+                id: container
+                spacing: '10dp'   
+
+        BoxLayout: #Seperate the buttons from the textfield
+            orientation: 'horizontal'
+
+            MDBoxLayout: #Box for buttons
+                orientation: 'vertical'
+                spacing: '10dp'
+                size_hint_x: None
+                width: self.minimum_width 
+
+                MDRoundFlatButton:
+                    text: 'Go back'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.go_back()
+
+
+                MDRoundFlatButton:
+                    text: 'Get data'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.generate_list()
+
+
+                MDRoundFlatButton:
+                    text: 'Send Data'
+                    padding : [32, 8, 32, 8]
+                    font_size : 40
+                    on_press: root.send_data()
+
+            MDBoxLayout: #Box for textfield
+                id:box_text
+                orientation: 'vertical'
+
+
+<ChangeDrop>
+    MDBoxLayout:
+        id:boxinfo
+        orientation: 'vertical'
+        padding: 15
+
+        ScrollView:
+            id:scroll
+            size_hint: (1, 1)
+            MDList:
+                id:container
+                spacing: '10dp'
+
+
+        MDRoundFlatButton:
+            text: 'Go back'
+            size_hint: (0.1 , 0.1)
+            on_press: root.go_back()
+            padding:"10dp"
