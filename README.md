@@ -1,6 +1,6 @@
 Ce projet a été réalisé pour la société technique Formule Polytechnique Montréal durant ma première année d’études. Initialement développé sur un GitLab privé, j’ai choisi de le sauvegarder sur mon GitHub personnel. À ce jour, le projet est inactif.
 
-Bien que je sois fier de ce travail, je reconnais que l’application n’atteint pas le niveau requis pour répondre aux besoins d’une organisation aussi complexe que Formule. Je tiens à exprimer ma gratitude envers Alexis Fadei, qui a joué un rôle clé dans la réalisation de ce projet, ainsi qu’à l’équipe informatique pour leur soutien et leur aide précieuse lors des moments difficiles.
+Je tiens à exprimer ma gratitude envers Alexis Fadei, qui a joué un rôle clé dans la réalisation de ce projet, ainsi qu’à l’équipe informatique pour leur soutien et leur aide précieuse lors des moments difficiles.
 
 Pour ce projet, j’ai utilisé Python avec la bibliothèque Kivy pour développer une application compatible Android et Windows. J’ai également intégré Google-Auth pour permettre la connexion via un compte Google et Gspread pour accéder aux informations du BOM (Bill of Materials) géré via Google Sheets par l’équipe.
 
